@@ -1,0 +1,45 @@
+/* Custom styling for Calendar */
+.react-calendar {
+    width: 100%;
+    max-width: 1200px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Styling for each date tile */
+.react-calendar__tile {
+    width: 100px !important;
+    height: 80px !important;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #ccc !important;
+    /* Default visible border */
+    transition: all 0.2s ease-in-out;
+    border-radius: 10%;
+}
+
+/* Highlight today's date */
+.react-calendar__tile--now {
+    background: #9d905e !important;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #5a4d32 !important;
+    border-radius: 10%;
+}
+
+/* Hover effect */
+.react-calendar__tile:hover {
+    background: #7a6464;
+    cursor: pointer;
+    border: 2px solid #5a4d32 !important;
+    /* Keep border always visible */
+}
+
+/* Selected date styling */
+.react-calendar__tile--active {
+    background: #ff5722 !important;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #d4ab9e !important;
+}
