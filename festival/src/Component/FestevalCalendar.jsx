@@ -73,15 +73,13 @@ const NepaliCalendar = () => {
 
   const filterFestivalsInMonth = filterFestivalsByMonth(festivals, currentDate);
   return (
-    <div className="flex flex-col lg:flex-row w-full sm:p-4 p-0 gap-4">
+    <div className="flex flex-col lg:flex-row w-full sm:p-4 p-0 gap-4 mt-5 sm:mt-1">
       {/* Festival List */}
-      <div className="bg-white border shadow-md rounded-md p-4 lg:max-w-[350px] w-full lg:w-auto">
+      <div className="order-2 lg:order-1 bg-white border shadow-md rounded-md p-4 lg:max-w-[350px] w-full lg:w-auto">
         <FestivalsInMonth filterFestivalsInMonth={filterFestivalsInMonth} />
       </div>
 
-      {/* Calendar */}
-      <div className="bg-white shadow-md rounded-md p-4 flex-1">
-        {/* Header */}
+  <div className="order-1 lg:order-2 bg-white shadow-md rounded-md p-4 flex-1">
         <div className="flex justify-between items-center mb-4">
           {/* <button
             onClick={prevMonth}
@@ -89,18 +87,26 @@ const NepaliCalendar = () => {
           >
             ⬅
           </button> */}
-          <Button onClick={prevMonth} color="white" className="text-lg font-bold px-2 hover:bg-gray-200 rounded-full"> ⬅</Button>
+          <Button
+            onClick={prevMonth}
+            color="white"
+            className="text-lg font-bold px-2 hover:bg-gray-200 rounded-full"
+          >
+            {" "}
+            ⬅
+          </Button>
           <h2 className="text-sm sm:text-xl  font-light sm:font-semibold text-center">
             {nepaliMonth} {nepaliYear} | {englishMonthName} {adYear}
           </h2>
           <Button
             onClick={nextMonth}
-            color="white" className="text-lg font-bold px-2 hover:bg-gray-200 rounded-full"          >
+            color="white"
+            className="text-lg font-bold px-2 hover:bg-gray-200 rounded-full"
+          >
             ➡
           </Button>
         </div>
 
-        {/* Weekday Headers */}
         <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center font-sm sm:font-bold">
           {weekendDays.map((day, index) => (
             <div key={index} className="p-2 sm:p-2 flex flex-col items-center">
@@ -110,7 +116,6 @@ const NepaliCalendar = () => {
           ))}
         </div>
 
-        {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-0 sm:gap-1">
           {calendarDays.map((day, i) => {
             if (!day) return <div key={i} className="w-full h-16 border"></div>;
@@ -125,13 +130,16 @@ const NepaliCalendar = () => {
                   handleDayClick(day, e, festivals, setSelectedDay, popupRef)
                 }
                 className={`w-full h-16 flex gap-0 flex-col justify-between items-center border  cursor-pointer transition hover:bg-gray-100
-                ${isToday(day.nepaliDate)
+                ${
+                  isToday(day.nepaliDate)
                     ? "bg-blue-500 text-white"
                     : "bg-white"
-                  }`}
+                }`}
               >
                 {festival && (
-                  <p className="text-red-600 text-[8px] sm:text-[8px] leading-3">{festival.name}</p>
+                  <p className="text-red-600 text-[8px] sm:text-[8px] leading-3">
+                    {festival.name}
+                  </p>
                 )}
                 <p className=" text-[15px] sm:text-lg font-semibold">
                   {day.nepaliDate.format("DD")}
